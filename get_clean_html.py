@@ -10,7 +10,7 @@ def analyze_url(url: str):
     clean_text = soup.get_text(separator="\n", strip=True)
     #Get API and it's response
     openai.api_key = st.secrets["openai"]["api_key"]
-    client = OpenAI ()
+    client = openai ()
     
     system_message = {
         "role": "system",
