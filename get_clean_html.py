@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from openai import OpenAI
+import openai 
 import streamlit as st
 
 def analyze_url(url: str):
