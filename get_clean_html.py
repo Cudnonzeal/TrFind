@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from openai import OpenAI
 
 
-def compose_message(text: str) -> str:
+def compose_message(clean_text: str) -> str:
     return f"""Analyze this text:\n\n{text}\n\nStep 1: Summarize the company in fluent, neutral business English. Include:
         - Primary industry and sub-industry
         - Business model (e.g., B2B wholesale, D2C retail, SaaS licensing)
@@ -39,11 +39,13 @@ def analyze_url(url: str):
     client_secret = st.secrets["openai"]["api_key"]
     client = OpenAI(api_key=client_secret)
 
-    client_input = [
+    system_input = [
         {
             "role": "system",
             "content": "You are top tier data analyst. Your goal is to extract only meaningful business-relevant information and ignore any unrelated UI content, legal notices, navigation text, or generic phrases."
-        },
+        }
+    ]
+    client_input[
         {
             "role": "user",
             "content": compose_message(clean_text)
@@ -53,8 +55,9 @@ def analyze_url(url: str):
     # Send to OpenAI
     answerme = client.responses.create(
         model="gpt-3.5-turbo",  # or "gpt-3.5-turbo" if using that
-        input=client_input,
+        instructions = system_input,
+        input= client_input,
         temperature=0.4
     )
 
-    return answerme.choices[0].message.content
+    return answerme.output_text
