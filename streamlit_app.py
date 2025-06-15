@@ -1,4 +1,19 @@
 import streamlit as st
 
-st.title("Hello from Streamlit 👋")
-st.write("This is a simple app deployed from GitHub!")
+from Get_Clean_HTML import analyze_url  # <- import funkcji
+
+st.title("Analiza strony HTML przez AI")
+
+url = st.text_input("Podaj URL do przeanalizowania:")
+
+if st.button("Analizuj stronę"):
+    if not url:
+        st.warning("Podaj poprawny URL.")
+    else:
+        with st.spinner("Pobieram i analizuję treść..."):
+            try:
+                analyze_url(url)
+                st.subheader("Wynik analizy AI:")
+                st.write(result)
+            except Exception as e:
+                st.error(f"Wystąpił błąd: {e}")
