@@ -45,7 +45,7 @@ def analyze_url(url: str):
             "content": "You are top tier data analyst. Your goal is to extract only meaningful business-relevant information and ignore any unrelated UI content, legal notices, navigation text, or generic phrases."
         }
     ]
-    client_input[
+    client_input = [
         {
             "role": "user",
             "content": compose_message(clean_text)
