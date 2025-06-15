@@ -12,7 +12,7 @@ if st.button("Analizuj stronę"):
     else:
         with st.spinner("Pobieram i analizuję treść..."):
             try:
-                analyze_url(url)
+                result = analyze_url(url)
                 st.subheader("Wynik analizy AI:")
                 st.write(result)
             except Exception as e:
