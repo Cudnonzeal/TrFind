@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import openai
+from open ai import OpenAI
 import streamlit as st
 
 def analyze_url(url: str):
@@ -10,6 +10,7 @@ def analyze_url(url: str):
     clean_text = soup.get_text(separator="\n", strip=True)
     #Get API and it's response
     openai.api_key = st.secrets["openai"]["api_key"]
+    client = OpenAI ()
     
     system_message = {
         "role": "system",
@@ -43,7 +44,7 @@ def analyze_url(url: str):
     }
     
     # Send to OpenAI
-    answerme = openai.ChatCompletion.create(
+    answerme = client.chat.completion.create(
         model="gpt-3.5-turbo",  # or "gpt-3.5-turbo" if using that
         messages=[system_message, user_message],
         temperature=0.4
