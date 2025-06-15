@@ -5,7 +5,7 @@ from openai import OpenAI
 
 
 def compose_message(clean_text: str) -> str:
-    return f"""Analyze this text:\n\n{text}\n\nStep 1: Summarize the company in fluent, neutral business English. Include:
+    return f"""Analyze this text:\n\n{clean_text}\n\nStep 1: Summarize the company in fluent, neutral business English. Include:
         - Primary industry and sub-industry
         - Business model (e.g., B2B wholesale, D2C retail, SaaS licensing)
         - Core products or services
