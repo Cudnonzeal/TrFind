@@ -5,7 +5,6 @@ import streamlit as st
 
 def analyze_url(url: str):
     # Step 1: Get the HTML
-    url = input("Enter the URL to scrape: ").strip()
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
     clean_text = soup.get_text(separator="\n", strip=True)
