@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import openai
+import streamlit as st
 
 def analyze_url(url: str):
     # Step 1: Get the HTML
@@ -13,7 +14,7 @@ def analyze_url(url: str):
     
     system_message = {
         "role": "system",
-        "content": "You are top tier data analyst. Your goal is to extract only meaningful business-relevant information and ignore any unrelated UI content, legal notices, navigation text, or generic phrases.
+        "content": "You are top tier data analyst. Your goal is to extract only meaningful business-relevant information and ignore any unrelated UI content, legal notices, navigation text, or generic phrases."
     }
     
     user_message = {
