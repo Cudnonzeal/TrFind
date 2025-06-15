@@ -1,5 +1,5 @@
 import streamlit as st
-from openai import OpenAI
+import openai
 from get_clean_html import analyze_url  # <- import funkcji
 
 st.title("Analiza strony HTML przez AI")
