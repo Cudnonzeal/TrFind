@@ -43,7 +43,7 @@ def analyze_url(url: str):
     }
     
     # Send to OpenAI
-    answerme = client.Chatcompletion.create(
+    answerme = openai.Chatcompletion.create(
         model="gpt-3.5-turbo",  # or "gpt-3.5-turbo" if using that
         messages=[system_message, user_message],
         temperature=0.4
