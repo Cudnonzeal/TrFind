@@ -19,7 +19,7 @@ def analyze_url(url: str):
     
     user_message = {
         "role": "user",
-        "content": f"Analyze this text:\n\n{clean_text}\n\nStep 1: Summarize the company in fluent, neutral business English. Include:
+        "content": f"""Analyze this text:\n\n{clean_text}\n\nStep 1: Summarize the company in fluent, neutral business English. Include:
     - Primary industry and sub-industry
     - Business model (e.g., B2B wholesale, D2C retail, SaaS licensing)
     - Core products or services
@@ -40,7 +40,7 @@ def analyze_url(url: str):
     
     KEYWORDS:
     Keyword Phrase 1 OR Keyword Phrase 2 OR Keyword Phrase 3 OR ...
-    ---"
+    ---"""
     }
     
     # Send to OpenAI
