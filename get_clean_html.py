@@ -43,9 +43,9 @@ def analyze_url(url: str):
     }
     
     # Send to OpenAI
-    answerme = client.responses.create(
+    answerme = client.response.create(
         model="gpt-3.5-turbo",  # or "gpt-3.5-turbo" if using that
         messages=[system_message, user_message],
         temperature=0.4
     )
-    return answerme['choices'][0]['message']['content']
+    return answerme.choices[0].message.content
