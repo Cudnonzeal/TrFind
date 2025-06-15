@@ -40,7 +40,7 @@ def analyze_url(url: str):
     client = OpenAI(api_key=client_secret)
 
     system_input = "You are top tier data analyst. Your goal is to extract only meaningful business-relevant information and ignore any unrelated UI content, legal notices, navigation text, or generic phrases."
-    client_input = compose_message()
+    client_input = compose_message(clean_text)
 
     # Send to OpenAI
     answerme = client.responses.create(
