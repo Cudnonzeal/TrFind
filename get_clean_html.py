@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import openai 
+from openai import OpenAI
 import streamlit as st
 
 def analyze_url(url: str):
@@ -9,8 +9,8 @@ def analyze_url(url: str):
     soup = BeautifulSoup(response.content, 'html.parser')
     clean_text = soup.get_text(separator="\n", strip=True)
     #Get API and it's response
-    openai.api_key = st.secrets["openai"]["api_key"]
     
+    client = OpenAI.api_key = st.secrets["openai"]["api_key"]
     system_message = {
         "role": "system",
         "content": "You are top tier data analyst. Your goal is to extract only meaningful business-relevant information and ignore any unrelated UI content, legal notices, navigation text, or generic phrases."
@@ -43,7 +43,7 @@ def analyze_url(url: str):
     }
     
     # Send to OpenAI
-    answerme = openai.ChatCompletion.create(
+    answerme = client.responses.create(
         model="gpt-3.5-turbo",  # or "gpt-3.5-turbo" if using that
         messages=[system_message, user_message],
         temperature=0.4
