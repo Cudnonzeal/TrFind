@@ -39,18 +39,8 @@ def analyze_url(url: str):
     client_secret = st.secrets["openai"]["api_key"]
     client = OpenAI(api_key=client_secret)
 
-    system_input = [
-        {
-            "role": "system",
-            "content": "You are top tier data analyst. Your goal is to extract only meaningful business-relevant information and ignore any unrelated UI content, legal notices, navigation text, or generic phrases."
-        }
-    ]
-    client_input = [
-        {
-            "role": "user",
-            "content": compose_message(clean_text)
-        }
-    ]
+    system_input = "You are top tier data analyst. Your goal is to extract only meaningful business-relevant information and ignore any unrelated UI content, legal notices, navigation text, or generic phrases."
+    client_input = compose_message()
 
     # Send to OpenAI
     answerme = client.responses.create(
