@@ -18,6 +18,6 @@ if st.button("Analizuj stronę"):
                 st.subheader("Wynik analizy AI:")
                 st.write(result)
                 Save_to_db(url, result)
-                print(Save_to_db)
+                st.write(Save_to_db)
             except Exception as e:
                 st.error(f"Wystąpił błąd: {e}")
