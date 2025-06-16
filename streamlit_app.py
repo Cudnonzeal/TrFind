@@ -1,6 +1,7 @@
 import streamlit as st
 import openai
 from get_clean_html import analyze_url, compose_message# <- import funkcji
+from Save_Des_and_Key import Save_to_db
 
 st.title("Analiza strony HTML przez AI")
 
