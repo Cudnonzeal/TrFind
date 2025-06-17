@@ -12,4 +12,4 @@ def Save_to_db(url, des_key):
         df.loc[len(df)] = [url, des_key]
         # Save the DataFrame back to Excel (prevent index column from being saved)
         df.to_csv(file_path)
-        return "URL and Des_Key added"
+        return df.tail()
