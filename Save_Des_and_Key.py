@@ -6,7 +6,7 @@ def Save_to_db(url, des_key):
     df = pd.read_csv(file_path)
     # Check if URL already exists
     if url in df['URL'].values:
-        return "URL already in db")
+        return "URL already in db"
     else:
         # Add the new row
         df.loc[len(df)] = [url, des_key]
